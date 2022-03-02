@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Whatsapp Parser</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="boostrap.css" />
+    <style>
+        .graph, .initial {
+            display: none;
+        }
+    </style>
+  </head>
+  <body>
+    <div style="height:95%; width:95%; margin-left: auto; margin-right: auto;">
+        <div
+            style="height:98%; width:98%;  margin-left: auto; margin-right: auto; padding-top: 20px"
+        >
+            <h1 id="top" class="display-3" style="text-align: center; color:#16a085;">
+            WhatsVis
+            </h1>
+
+            <div class="policy container">
+                <h1>Privacy Policy</h1>
+              
+                <p>
+                  WHATSVIS operates the
+                  https://ameyrk.me/whatsapp-visualizer/ website (the "Service").
+                </p>
+              
+                <p>
+                  This page informs you of our policies regarding the collection, use, and
+                  disclosure of personal data when you use our Service and the choices you
+                  have associated with that data.
+                </p>
+              
+                <h2>Information Collection And Use</h2>
+              
+                <p>
+                  We <b><u>do not</u></b> collect any data. Everything happens on the client-side.
+                </p>
+              
+                <h3>Types of Data Collected</h3>
+              
+                <h4>Personal Data</h4>
+              
+                <p>
+                  No personal data is collected.
+                </p>
+              
+                <ul>
+                  <li>Cookies and Usage Data</li>
+                </ul>
+              
+                <h4>Usage Data</h4>
+              
+                <p>
+                  No usage data is collected.
+                </p>
+              
+                <h4>Tracking & Cookies Data</h4>
+                <p>
+                  Website does not use cookies or tracking data.
+                </p>
+              
+                <h2>Links To Other Sites</h2>
+                <p>
+                  Our Service may contain links to other sites that are not operated by us. If
+                  you click on a third party link, you will be directed to that third party's
+                  site. We strongly advise you to review the Privacy Policy of every site you
+                  visit.
+                </p>
+                <p>
+                  We have no control over and assume no responsibility for the content,
+                  privacy policies or practices of any third party sites or services.
+                </p>
+              
+                <h2>Contact Us</h2>
+                <p>If you have any questions about this Privacy Policy, please contact us:</p>
+                <ul>
+                  <li>By email: ameykhairnar99@gmail.com</li>
+                </ul>
+
+                <button type="button" onclick="continueFunc()" class="btn btn-success" style="background-color: #16a085; color:white;">
+                    I understand and choose to continue
+                </button>
+              </div>
+              
+
+            <div class="initial">
+                <fieldset>
+                    <div class="form-group" style="width: 60%; margin-left: auto; margin-right: auto;">
+                        <div class="input-group mb-3">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputFile" />
+                                <label class="custom-file-label" for="inputFile">Choose your Whatsapp Chat file</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <br /><br />
+
+                <div style="text-align: center;">
+                    <h4>Note</h4>
+                    <p>
+                        I <u><b>do not</b></u> collect any data. <br>
+                        Check out the code <a href="https://github.com/ameyrk99/whatsapp-visualizer/tree/gh-pages">here</a>. 
+                        Feel free to fork, modify, and improve the thing :)
+                    </p>
+                </div>
+
+                <br /><br />
+
+                <div style="text-align: center;">
+                    <h4>How to get Whatsapp Chat file</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            1. When inside the chat, click the <u>three dot icon</u> <br> <img src="images/steps/three_dots.png" alt="three dots" style="width: 60%"> <br> <br>
+
+                            2. Click <u>More ></u> <br> <img src="images/steps/dot_menu.png" alt="dot menu" style="height: 35%">
+                        </div>
+                        <div class="col-lg-6">
+                            3. Click <u>Export Chat</u> <br> <img src="images/steps/more_menu.png" alt="more menu" style="height: 35%"> <br><br>
+
+                            4. Select <u>WITHOUT MEDIA</u> <br> <img src="images/steps/media_select.png" alt="without media image" style="width: 40%"> <br><br>
+                            
+                            This is important as it won't work otherwise. <br>
+                            Export the chat file with the method you are comfortable with.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div style="height: 600%; width: 87%; margin-left: auto; margin-right: auto;  padding: 5%; padding-bottom: 2.5%; text-align: center">
+                    <div class="row">
+                        <div class="col-lg-6 graph">
+                            <h4>Messages Sent</h4>
+                            <canvas id="msgs" width="100%" height="100%"></canvas>
+                        </div>
+                        <div class="col-lg-6 graph">
+                            <h4>Words Used</h4>
+                            <canvas id="wrds" width="100%" height="100%"></canvas>
+                        </div>
+                    </div> <br>
+
+                    <div class="row" id="first">
+                        <div class="col-lg-6">
+                            <a href="https://github.com/ameyrk99/whatsapp-visualizer" class="graph" target="_blank">
+                                <button type="button" class="btn btn-success" style="background-color: #05070A; color:white;">
+                                    View Code
+                                </button>
+                            </a>
+                        </div>
+                        <div class="col-lg-6">
+                            <a href="#first" class="graph">
+                                <button type="button" class="btn btn-success" style="background-color: #FFD700; color:black">
+                                    Check most used words and Media Stats
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="height: 600%; width: 87%; margin-left: auto; margin-right: auto; padding: 5%; padding-top: 2.5%; text-align: center">
+                    <div class="row" id="second">
+                        <div class="col-lg-6 graph">
+                            <h4>Most Used non-stop Words</h4>
+                            <canvas id="topWords" width="100%" height="100%; padding: 2%"></canvas>
+                        </div>
+                        <div class="col-lg-6 graph">
+                            <h4>Media Sent</h4>
+                            <canvas id="mda" width="100%" height="100%"></canvas>
+                        </div>
+                    </div><br><br>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <a href="https://github.com/ameyrk99/whatsapp-visualizer" class="graph" target="_blank">
+                                <button type="button" class="btn btn-success" style="background-color: #05070A; color:white;">
+                                    View Code
+                                </button>
+                            </a>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="#third" class="graph">
+                                <button type="button" class="btn btn-success" style="background-color: #FFD700; color:black;">
+                                    View Timings Stats
+                                </button>
+                            </a>
+                        </div>
+                        <div class="col-lg-4">
+                            <a href="#top" class="graph">
+                                <button type="button" class="btn btn-success" style="background-color: #FF4040; color:white;">
+                                    Go up
+                                </button>
+                            </a>
+                        </div>
+                    </div> <br><br><br>
+                
+                    <div id="third" class="graph" style="height: 600%; width: 87%; margin-left: auto; margin-right: auto; padding: 5%; padding-top: 2.5%; text-align: center">
+                        <h4>Timings</h4>
+                        <canvas id="times" width="100%" height="50%; padding: 2%"></canvas> <br><br>
+
+                        <div class="row">
+                                <div class="col-lg-3">
+                                    <a href="https://github.com/ameyrk99/whatsapp-visualizer" class="graph" target="_blank">
+                                        <button type="button" class="btn btn-success" style="background-color: #05070A; color:white;">
+                                            View Code
+                                        </button>
+                                    </a>
+                                </div>
+                                <div class="col-lg-3">
+                                    <a href="https://ameyrk.me/whatsapp-visualizer/" class="graph">
+                                        <button type="button" class="btn btn-success" style="background-color: #16a085; color:white;">
+                                            Try another file
+                                        </button>
+                                    </a>
+                                </div>
+                                <div class="col-lg-3">
+                                    <a href="https://www.chartjs.org" class="graph" target="_blank">
+                                        <button type="button" class="btn btn-success" style="background-color: #186ed1; color:white;">
+                                            Chart.js
+                                        </button>
+                                    </a>
+                                </div>
+                                <div class="col-lg-3">
+                                    <a href="#top" class="graph">
+                                        <button type="button" class="btn btn-success" style="background-color: #FF4040; color:white;">
+                                            Go up
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+    <script>
+        continueFunc = () => {
+            $(document).ready(
+                function() {
+                    $(".policy, .initial").fadeToggle(100);
+                }
+            )
+        }
+    </script>
+  </body>
+</html>
